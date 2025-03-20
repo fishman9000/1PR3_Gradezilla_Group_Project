@@ -2,6 +2,6 @@
 class Student
 {
 private:
-
+	Course
 };
 
