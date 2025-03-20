@@ -11,20 +11,20 @@ class Course {
 		string classroom;
 
 	public:
-		//consructors
+		//constructors
 		Course(string code, string name, string teacher, string room);
 
 		//Setters
-		void setCourseCode(std::string code);
-		void setCourseName(std::string name);
-		void setTeacherName(std::string teacher);
-		void setClassroom(std::string room);
-
+		void setCourseCode(string code);
+		void setCourseName(string name);
+		void setTeacherName(string teacher);
+		void setClassroom(string room);
+		//we need to still get the grades for every class!!!!!!!!
 		//getters
-		std::string getCourseCode() const;
-		std::string getCourseName() const;
-		std::string getTeacherName() const;
-		std::string getClassroom() const;
+		string getCourseCode() const;
+		string getCourseName() const;
+		string getTeacherName() const;
+		string getClassroom() const;
 		
 		//Calculate average grade
 		double getAverageGrade() const;

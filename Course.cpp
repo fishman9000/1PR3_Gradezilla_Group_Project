@@ -1,33 +1,47 @@
 #include "Course.h"
+using namespace std;
 
-Course::Course(std::string code, std::string name, std::string teacher, std::string room)
+Course::Course(string code, string name, string teacher, string room)
     : courseCode(code), courseName(name), teacherName(teacher), classroom(room) {}
 
 // Setters
-void Course::setCourseCode(std::string code) {
+void Course::setCourseCode(string code) {
     courseCode = code;
 }
 
-void Course::setCourseName(std::string name) {
+void Course::setCourseName(string name) {
     courseName = name;
 }
 
-void Course::setTeacherName(std::string teacher) {
+void Course::setTeacherName(string teacher) {
     teacherName = teacher;
 }
 
-void Course::setClassroom(std::string room) {
+void Course::setClassroom(string room) {
     classroom = room;
 }
 
 //getters 
 
+
+
 string Course::getCourseCode() const {
-    return courseCode; 
+    return courseCode;
 }
 
 string Course::getCourseName() const {
-    return courseName; 
+    return courseName;
+}
+
+string Course::getTeacherName() const {
+    return teacherName;
+}
+
+string Course::getClassroom() const {
+    return classroom;
 }
 
 
+
+// Calculate the average grade
+//DO THIS LATERRRRR
