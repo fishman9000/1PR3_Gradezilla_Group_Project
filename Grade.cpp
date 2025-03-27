@@ -1,4 +1,5 @@
 #include "Grade.h"
+using namespace std; 
 
 //setter definitions
 void Grade::setName(string n) {

@@ -24,7 +24,6 @@ void Course::setClassroom(string room) {
 //getters 
 
 
-
 string Course::getCourseCode() const {
     return courseCode;
 }
