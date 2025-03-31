@@ -17,6 +17,6 @@ public:
 	double getWeight() const;
 
 	//constructor
-	Grade(name n, double g, double w);
+	Grade(string n, double g, double w);
 };
 
