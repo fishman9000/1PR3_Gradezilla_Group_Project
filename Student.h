@@ -10,7 +10,7 @@ private:
 	static const int SIZE = 5; //this should be set to numCourses, but we'll leave it here for now for testing purposes
 	Course courseArray[SIZE]; //array of courses
 
-	Course* courseArrayTest;
+	Course* courseArrayTest; //Testing Array with dynamically allocated memory
 
 
 
@@ -24,6 +24,8 @@ public:
 	//default constructor
 	//constructor
 	Student(int n, Info i, Attendance r);
+
+	~Student(); // destructor for DAM
 
 };
 
