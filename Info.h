@@ -1,21 +1,29 @@
 #pragma once
 #include <string>
+
 using namespace std;
-class Info //student's personal info
-{
+
+class Info {
 private:
-	int age;
-	string gender;
-	string address;
+    string name;
+    int age;
+    string gender;
+    string address;
+
 public:
-	//setters
-	void setAge(int a);
-	void setGender(string g);
-	void setAddress(string d);
+    Info();  // Default constructor
+    Info(string name, int age, string gender, string address);  // Parametrized constructor
 
-	//getters
-	int getAge() const;
-	string getGender() const;
-	string getAddress() const;
+    // Setters and Getters
+    void setName(string n);
+    string getName() const;
+
+    void setAge(int a);
+    int getAge() const;
+
+    void setGender(string g);
+    string getGender() const;
+
+    void setAddress(string addr);
+    string getAddress() const;
 };
-

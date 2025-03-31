@@ -1,35 +1,43 @@
 #pragma once
 #include <string>
+#include <vector>
+#include "Grade.h"
 
 using namespace std;
 
 class Course {
-	private:
-		string courseCode;
-		string courseName;
-		string teacherName;
-		string classroom;
+private:
+    string courseCode;
+    string courseName;
+    string teacherName;
+    string classroom;
+    vector<string> studentIDs;  // Dynamically sized vector for student IDs
+    vector<vector<Grade>> grades;  // Dynamically sized 2D vector for storing grades
+    int numAssignments;  // Tracks number of assignments added
 
-	public:
-		//constructors
-		Course(string code, string name, string teacher, string room);
+public:
+    Course();  // Default constructor
+    Course(string code, string name, string teacher, string room);
 
-		//Setters
-		void setCourseCode(string code);
-		void setCourseName(string name);
-		void setTeacherName(string teacher);
-		void setClassroom(string room);
-		//we need to still get the grades for every class!!!!!!!!
-		//getters
-		string getCourseCode() const;
-		string getCourseName() const;
-		string getTeacherName() const;
-		string getClassroom() const;
-		
-		//Calculate average grade
-		double getAverageGrade() const;
+    // Setters
+    void setCourseCode(string code);
+    void setCourseName(string name);
+    void setTeacherName(string teacher);
+    void setClassroom(string room);
+    void addAssignment(const Grade& grade);
 
+    // Getters
+    string getCourseCode() const;
+    string getCourseName() const;
+    string getTeacherName() const;
+    string getClassroom() const;
+    int getNumAssignments() const;
 
+    // Methods to manage students
+    void addStudent(string studentID);
+    void addGradeForStudent(int studentIndex, const Grade& grade);
+    void enterGradesForCourse();
+
+    // Calculate course average
+    double calculateCourseAverage() const;
 };
-
-

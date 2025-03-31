@@ -1,14 +1,12 @@
 #pragma once
-class Attendance
-{
-private:
-	int days_attended, days_missed; //member variables for days attended and days missed
-public:
-	//setters
-	void setDaysAttended(int);
-	void setDaysMissed(int);
-	//getters
-	int getDaysAttended() const;
-	int getDaysMissed() const;
-};
+#include <iostream>
 
+class Attendance {
+private:
+    int daysAttended;  // Holds the number of days attended
+
+public:
+    Attendance();  // Constructor declaration
+    void setDaysAttended(int days);  // Setter declaration
+    int getDaysAttended() const;  // Getter declaration
+};

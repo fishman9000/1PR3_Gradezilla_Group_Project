@@ -1,17 +1,22 @@
 #include "Attendance.h"
+#include <iostream>
+using namespace std;
 
-//setter definitions
-void Attendance::setDaysAttended(int a) {
-	days_attended = a;
-}
-void Attendance::setDaysMissed(int m) {
-	days_missed = m;
+// Default constructor
+Attendance::Attendance() : daysAttended(0) {}
+
+// Setter for daysAttended
+void Attendance::setDaysAttended(int days) {
+    if (days >= 0) {  // Ensure that days attended is non-negative
+        daysAttended = days;
+    }
+    else {
+        cout << "Error: Days attended cannot be negative.\n";
+    }
 }
 
-//getter definitions
+// Getter for daysAttended
 int Attendance::getDaysAttended() const {
-	return days_attended;
+    return daysAttended;
 }
-int Attendance::getDaysMissed() const {
-	return days_missed;
-}
+

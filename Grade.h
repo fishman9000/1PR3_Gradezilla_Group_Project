@@ -1,22 +1,29 @@
 #pragma once
-class Grade
 #include <string>
-{
+#include <vector>
+using namespace std;
+
+class Grade {
 private:
-	string name;
-	double grade, weight; //member variables for a single grade and a weight
+    string name;
+    double grade;
+    double weight;
+
 public:
-	//setters
-	void setName(string n);
-	void setGrade(double g);
-	void setWeight(double w);
+    // Constructors
+    Grade(); // Default constructor
+    Grade(string n, double g, double w);
 
-	//getters
-	string getName() const;
-	double getGrade() const;
-	double getWeight() const;
+    // Setters
+    void setName(string n);
+    void setGrade(double g);
+    void setWeight(double w);
 
-	//constructor
-	Grade(name n, double g, double w);
+    // Getters
+    string getName() const;
+    double getGrade() const;
+    double getWeight() const;
+
+    // Method to calculate weighted grade
+    double calculateWeightedGrade() const;
 };
-
