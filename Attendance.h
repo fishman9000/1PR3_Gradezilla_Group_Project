@@ -1,7 +1,7 @@
 #pragma once
 class Attendance
 {
-private:
+protected:
 	int days_attended, days_missed; //member variables for days attended and days missed
 public:
 	//setters
@@ -10,5 +10,11 @@ public:
 	//getters
 	int getDaysAttended() const;
 	int getDaysMissed() const;
+
+	//default constructor
+	Attendance();
+
+	//constructors
+	Attendance(int a, int m);
 };
 

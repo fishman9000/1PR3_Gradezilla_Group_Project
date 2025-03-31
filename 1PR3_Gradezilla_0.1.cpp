@@ -20,7 +20,7 @@ int main()
 {
     cout << "**********************************WELCOME TO GRADEZILLA**********************************" << endl; //intro message
     
-    Student Jeff; // make a student object
+    Student currentStudent; // make a student object
     
     
     bool done = false;
@@ -39,7 +39,11 @@ int main()
                 cout << "get attendance records" << endl;
             }
             if (user_in == "B") {
-                cout << "enter Personal Info: " << endl;
+                string tmp;
+                cout << "Enter Personal Info Selected." << endl;
+                cout << "Please enter your name: ";
+                cin >> tmp;
+                
             }
             if (user_in == "C") {
                 cout << "choose course" << endl;

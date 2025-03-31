@@ -5,7 +5,7 @@ using namespace std;
 
 
 
-void Info::setName(int n) {
+void Info::setName(string n) {
 	name = n;
 }
 void Info::setAge(int a) {
@@ -30,6 +30,14 @@ string Info::getGender() const {
 }
 string Info::getAddress() const {
 	return address;
+}
+
+//Default constructor
+Info::Info() {
+	name = "";
+	age = 0;
+	gender = "";
+	address = "";
 }
 
 //constructor

@@ -3,14 +3,14 @@
 using namespace std;
 class Info //student's personal info
 {
-private:
+protected:
 	string name;
 	int age;
 	string gender;
 	string address;
 public:
 	//setters
-	void setName(int n);
+	void setName(string n);
 	void setAge(int a);
 	void setGender(string g);
 	void setAddress(string d);
@@ -21,6 +21,9 @@ public:
 	int getAge() const;
 	string getGender() const;
 	string getAddress() const;
+
+	//default constructor
+	Info();
 
 	//constructor
 	Info(string n, int a, string g, string d);

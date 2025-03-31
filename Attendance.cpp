@@ -15,3 +15,17 @@ int Attendance::getDaysAttended() const {
 int Attendance::getDaysMissed() const {
 	return days_missed;
 }
+
+
+//default constructor
+Attendance::Attendance() {
+	days_attended = 0;
+	days_missed = 0;
+}
+
+//constructor definition
+
+Attendance::Attendance(int a, int m) {
+	days_attended = a;
+	days_missed = m;
+}

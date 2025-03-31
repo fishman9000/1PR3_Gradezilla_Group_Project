@@ -1,9 +1,10 @@
 #pragma once
-class Grade
 #include <string>
+using namespace std;
+class Grade
 {
 private:
-	string name;
+	string name; //the name of what the grade is for
 	double grade, weight; //member variables for a single grade and a weight
 public:
 	//setters
@@ -17,6 +18,6 @@ public:
 	double getWeight() const;
 
 	//constructor
-	Grade(name n, double g, double w);
+	Grade(string, double, double);
 };
 
