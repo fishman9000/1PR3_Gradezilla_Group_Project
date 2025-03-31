@@ -13,6 +13,8 @@
 #include "Course.h"
 #include "Info.h"
 #include "Grade.h"
+#include <algorithm> //added this header for transform function (handles Upper/lower case scenario)
+#include <cctype> // for toupper header for transform function
 using namespace std;
 
 
@@ -30,11 +32,15 @@ int main()
         cout << "HOME MENU" << endl;
         cout << "A: Enter Data\nB: View Data \nX: Exit program. " << endl; //have default constructor for everything so that if there's no data,it can be like "no data entered"
         cin >> user_in; //take user input
+        transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper);// this is to handle any lower/upper case scenario
+        
         if (user_in == "A") {
             cout << "*****ENTER DATA MENU***" << endl;
             cout << "What would you like to enter data for?" << endl;
             cout << "A: Attendance\nB: Personal Info\nC: Course Info\nH: Return Home" << endl;
             cin >> user_in;
+            transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper);// this is to handle any lower/upper case scenario
+            
             if (user_in == "A") {
                 cout << "get attendance records" << endl;
             }
@@ -57,6 +63,8 @@ int main()
             cout << "What data would you like to view?" << endl;
             cout << "A: Attendance\nB: Personal Info\nC: Course Info\nH: Return Home" << endl;
             cin >> user_in;
+            transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper);// this is to handle any lower/upper case scenario
+            
             if (user_in == "A") {
                 cout << "get attendance records" << endl;
             }
