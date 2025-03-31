@@ -10,6 +10,9 @@ private:
 	static const int SIZE = 5; //this should be set to numCourses, but we'll leave it here for now for testing purposes
 	Course courseArray[SIZE]; //array of courses
 
+	Course* courseArrayTest;
+
+
 
 	//other private members
 	Info studentInfo; //student info object to store their data and stuff
