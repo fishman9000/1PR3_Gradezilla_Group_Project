@@ -5,7 +5,7 @@ using namespace std;
 
 
 
-void Info::setName(int n) {
+void Info::setName(string n) {
 	name = n;
 }
 void Info::setAge(int a) {
