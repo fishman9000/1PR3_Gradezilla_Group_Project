@@ -3,6 +3,14 @@
 
 using namespace std;
 
+//default constructor definition
+Course::Course() {
+    courseCode = "";
+    courseName = "";
+    teacherName = "";
+    classroom = "";
+}
+
 // Constructor
 Course::Course(string code, string name, string teacher, string room)
     : courseCode(code), courseName(name), teacherName(teacher), classroom(room), studentCount(0), assignmentCount(0) {

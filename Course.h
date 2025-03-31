@@ -18,6 +18,9 @@ private:
     int assignmentCount;                   // Number of assignments
 
 public:
+    //default constructor
+    Course();
+
     // Constructor
     Course(string code, string name, string teacher, string room);
 

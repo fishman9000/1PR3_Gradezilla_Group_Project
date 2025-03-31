@@ -25,6 +25,13 @@ double Grade::getWeight() const {
 	return weight;
 }
 
+//default constructor definition
+Grade::Grade() {
+	name = "";
+	grade = 0;
+	weight = 0;
+}
+
 //constructor definition
 Grade::Grade(string n, double g, double w) {
 	name = n;

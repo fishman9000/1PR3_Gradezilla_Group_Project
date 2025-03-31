@@ -1,4 +1,5 @@
 #include "Student.h"
+#include "Course.h"
 //constructor
 Student::Student(int n, Info i, Attendance r) :numCourses(n), studentInfo(i), record(r) {
 	courseArrayTest = new Course[numCourses]; // Dynamically allocate array
@@ -12,7 +13,7 @@ Student::Student() {
 	studentInfo.setAddress("wakanda");
 	record.setDaysAttended(0);
 	record.setDaysMissed(0);
-
+}
 
 Student::~Student() {
 	delete[] courseArrayTest;

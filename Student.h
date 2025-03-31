@@ -26,9 +26,6 @@ public:
 	//constructor
 	Student(int n, Info i, Attendance r);
 
-	//Test Constructor
-	Student(int n, Info i, Attendance r);
-
 	~Student(); // destructor for DAM
 
 };

@@ -17,6 +17,9 @@ public:
 	double getGrade() const;
 	double getWeight() const;
 
+	//default constructor
+	Grade();
+
 	//constructor
 	Grade(string, double, double);
 };
