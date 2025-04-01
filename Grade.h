@@ -3,7 +3,7 @@
 using namespace std;
 class Grade
 {
-private:
+protected:
 	string name; //the name of what the grade is for
 	double grade, weight; //member variables for a single grade and a weight
 public:

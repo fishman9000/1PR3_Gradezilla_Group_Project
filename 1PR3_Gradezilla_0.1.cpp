@@ -17,13 +17,14 @@
 #include <cctype> // for toupper header for transform function
 using namespace std;
 
-
 int main()
 {
     cout << "**********************************WELCOME TO GRADEZILLA**********************************" << endl; //intro message
     
     Student currentStudent; // make a student object
     
+    //temporary info object used as a middleman to write data to the student
+    Info tempInfo;
     
     bool done = false;
     string user_in; //user input variable (make sure to validate the input so if the user doesn't enter one of the menu options, it does the loop again)
@@ -35,7 +36,7 @@ int main()
         transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper);// this is to handle any lower/upper case scenario
         
         if (user_in == "A") {
-            cout << "*****ENTER DATA MENU***" << endl;
+            cout << "\n*****ENTER DATA MENU*****" << endl;
             cout << "What would you like to enter data for?" << endl;
             cout << "A: Attendance\nB: Personal Info\nC: Course Info\nH: Return Home" << endl;
             cin >> user_in;
@@ -46,10 +47,22 @@ int main()
             }
             if (user_in == "B") {
                 string tmp;
+                int tmpage; //an int temporary value, specifically for the age
                 cout << "Enter Personal Info Selected." << endl;
                 cout << "Please enter your name: ";
                 cin >> tmp;
-                
+                tempInfo.setName(tmp);
+                cout << "Please enter your age: ";
+                cin >> tmpage;
+                tempInfo.setAge(tmpage);
+                cout << "Please enter your gender: ";
+                cin >> tmp;
+                tempInfo.setGender(tmp);
+                cout << "Please enter your address: ";
+                cin >> tmp;
+                tempInfo.setAddress(tmp);
+                currentStudent.setStudentInfo(tempInfo);
+                cout << "Data entered successfully." << endl;
             }
             if (user_in == "C") {
                 cout << "choose course" << endl;
@@ -58,8 +71,8 @@ int main()
                 cout << "Returning to Home Menu." << endl;
             }
         }
-        if (user_in == "B") {
-            cout << "*****VIEW DATA MENU*****" << endl;
+        else if (user_in == "B") {
+            cout << "\n*****VIEW DATA MENU*****" << endl;
             cout << "What data would you like to view?" << endl;
             cout << "A: Attendance\nB: Personal Info\nC: Course Info\nH: Return Home" << endl;
             cin >> user_in;
@@ -70,6 +83,7 @@ int main()
             }
             if (user_in == "B") {
                 cout << "Displaying Personal Info: " << endl;
+                currentStudent.displayStudentInfo(); //call display student info function
             }
             if (user_in == "C") {
                 cout << "choose course" << endl;
@@ -78,7 +92,7 @@ int main()
                 cout << "Returning to Home Menu." << endl;
             }
         }
-        if (user_in == "X") { //if the user input is X...
+        else if (user_in == "X") { //if the user input is X...
             cout << "Thank you for using GradeZilla. Keep those grades high - remember, A is for alpha, Bs are for betas!!" << endl; //exit message
             //don't forget to prompt the user to save the program data into a file
             done = true; //exit the loop, therefore ending the program

@@ -7,7 +7,7 @@ const int MAX_STUDENTS = 100;   // Maximum students per course
 const int MAX_ASSIGNMENTS = 10; // Maximum assignments per course
 
 class Course {
-private:
+protected:
     string courseCode;
     string courseName;
     string teacherName;

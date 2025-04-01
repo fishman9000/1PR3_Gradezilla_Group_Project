@@ -4,7 +4,7 @@
 #include "Attendance.h"
 class Student
 {
-private:
+protected:
 	//course data handling
 	int numCourses; //number of courses (determines the size of the array, user inputs this through the main)
 	static const int SIZE = 5; //this should be set to numCourses, but we'll leave it here for now for testing purposes
@@ -28,5 +28,13 @@ public:
 
 	~Student(); // destructor for DAM
 
+
+	//setter and getter for studentInfo
+	void setStudentInfo(Info i);
+	Info getStudentInfo() const;
+
+	//display student info function
+	void displayStudentInfo() const;
 };
+
 

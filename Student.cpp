@@ -7,14 +7,26 @@ Student::Student(int n, Info i, Attendance r) :numCourses(n), studentInfo(i), re
 
 //default constructor
 Student::Student() {
-	studentInfo.setName("jeff");
+	studentInfo.setName("");
 	studentInfo.setAge(0);
-	studentInfo.setGender("helicopter");
-	studentInfo.setAddress("wakanda");
+	studentInfo.setGender("");
+	studentInfo.setAddress("");
 	record.setDaysAttended(0);
 	record.setDaysMissed(0);
 }
 
 Student::~Student() {
 	delete[] courseArrayTest;
+}
+
+void Student::setStudentInfo(Info i) {
+	studentInfo = i;
+}
+Info Student::getStudentInfo() const {
+	return studentInfo;
+}
+
+//display student info
+void Student::displayStudentInfo() const {
+	studentInfo.displayInfo();
 }
