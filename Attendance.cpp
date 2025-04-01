@@ -7,7 +7,7 @@ using namespace std;
 // Setter for daysAttended
 void Attendance::setDaysAttended(int days) {
     if (days >= 0) {  // Ensure that days attended is non-negative
-        daysAttended = days;
+        days_attended = days;
     }
     else {
         cout << "Error: Days attended cannot be negative.\n";
@@ -16,7 +16,7 @@ void Attendance::setDaysAttended(int days) {
 //setter for days missed
 void Attendance::setDaysMissed(int days) {
     if (days >= 0) {  // Ensure that days is non-negative
-        daysAttended = days;
+        days_attended = days;
     }
     else {
         cout << "Error: Days missed cannot be negative.\n";
@@ -26,7 +26,7 @@ void Attendance::setDaysMissed(int days) {
 
 // Getter for daysAttended
 int Attendance::getDaysAttended() const {
-    return daysAttended;
+    return days_attended;
 }
 //getter for days missed
 int Attendance::getDaysMissed() const {

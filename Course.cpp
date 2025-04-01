@@ -8,49 +8,24 @@ Course::Course() : courseCode(""), courseName(""), teacherName(""), classroom(""
 
 // Constructor with course details
 Course::Course(string code, string name, string teacher, string room)
-    : courseCode(code), courseName(name), teacherName(teacher), classroom(room), numAssignments(0) {}
-
-// Setters
-void Course::setCourseCode(string code) { courseCode = code; }
-void Course::setCourseName(string name) { courseName = name; }
-void Course::setTeacherName(string teacher) { teacherName = teacher; }
-void Course::setClassroom(string room) { classroom = room; }
-
-// Getters
-string Course::getCourseCode() const { return courseCode; }
-string Course::getCourseName() const { return courseName; }
-string Course::getTeacherName() const { return teacherName; }
-string Course::getClassroom() const { return classroom; }
-
-// Add a new student
-void Course::addStudent(string studentID) {
-    if (studentCount < MAX_STUDENTS) {
-        studentIDs[studentCount] = studentID;
-        studentCount++;
-    }
-    else {
-        cout << "Error: Maximum student limit reached.\n";
-    }
+    : courseCode(code), courseName(name), teacherName(teacher), classroom(room), numAssignments(0) {
 }
 
-// Add or update a student's grade for a specific assignment
-void Course::addGrade(string studentID, int assignmentIndex, double grade) {
-    if (assignmentIndex >= MAX_ASSIGNMENTS) {
-        cout << "Error: Assignment index out of range.\n";
-        return;
-    }
+// Setters
+void Course::setCourseCode(string code) {
+    courseCode = code;
+}
 
-    for (int i = 0; i < studentCount; i++) {
-        if (studentIDs[i] == studentID) {
-            grades[i][assignmentIndex] = grade;
-            if (assignmentIndex >= assignmentCount) {
-                assignmentCount = assignmentIndex + 1;
-            }
-            return;
-        }
-    }
+void Course::setCourseName(string name) {
+    courseName = name;
+}
 
-    cout << "Error: Student not found.\n";
+void Course::setTeacherName(string teacher) {
+    teacherName = teacher;
+}
+
+void Course::setClassroom(string room) {
+    classroom = room;
 }
 
 // Getters
@@ -58,27 +33,16 @@ string Course::getCourseCode() const {
     return courseCode;
 }
 
-// Display all student grades
-void Course::displayGrades() const {
-    cout << "\nGrades for " << courseName << ":\n";
-    cout << "Student ID\t";
-    for (int j = 0; j < assignmentCount; j++) {
-        cout << "Assignment " << j + 1 << "\t";
-    }
-    cout << endl;
+string Course::getCourseName() const {
+    return courseName;
+}
 
-    for (int i = 0; i < studentCount; i++) {
-        cout << studentIDs[i] << "\t\t";
-        for (int j = 0; j < assignmentCount; j++) {
-            if (grades[i][j] == -1) {
-                cout << "-\t\t";
-            }
-            else {
-                cout << grades[i][j] << "\t\t";
-            }
-        }
-        cout << endl;
-    }
+string Course::getTeacherName() const {
+    return teacherName;
+}
+
+string Course::getClassroom() const {
+    return classroom;
 }
 
 int Course::getNumAssignments() const {

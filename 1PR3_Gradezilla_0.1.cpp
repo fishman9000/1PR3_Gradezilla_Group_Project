@@ -66,13 +66,38 @@ void handleMainMenuChoice(char choice, Student& student) {
         handleDataEntryMenu(student);
     }
     else if (choice == 'B') {
-        cout << "View Data functionality coming soon!\n";
+        //cout << "View Data functionality coming soon!\n";
+        handleDataEntryMenu(student);
     }
     else if (choice == 'C') {
         handleGradeEntryMenu(student);
     }
     else {
         cout << "Invalid input! Please enter A, B, C, or X." << endl;
+    }
+}
+
+void handleDataViewMenu(Student& student) {
+    string user_in; //user input thingy
+    cout << "\n*****VIEW DATA MENU*****" << endl;
+    cout << "What data would you like to view?" << endl;
+    cout << "A: Attendance\nB: Personal Info\nC: Course Info\nH: Return Home" << endl;
+    cin >> user_in;
+    transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper);// this is to handle any lower/upper case scenario
+
+    if (user_in == "A") {
+        cout << "Displaying Attendance Records: " << endl;
+        student.displayStudentAttendance();
+    }
+    if (user_in == "B") {
+        cout << "Displaying Personal Info: " << endl;
+        student.displayStudentInfo(); //call display student info function
+    }
+    if (user_in == "C") {
+        cout << "View course data functionality coming soon!" << endl;
+    }
+    if (user_in == "H") {
+        cout << "Returning to Home Menu..." << endl;
     }
 }
 
@@ -89,9 +114,13 @@ void handleDataEntryMenu(Student& student) {
 
     if (dataChoice == 'A') {
         int daysAttended;
+        int daysMissed;
         cout << "Enter total days attended: ";
         cin >> daysAttended;
-        student.getAttendanceRecord().setDaysAttended(daysAttended);  // Set attendance across all courses
+        student.getStudentAttendance().setDaysAttended(daysAttended);  // Set attendance across all courses
+        cout << "Enter total days missed: ";
+        cin >> daysMissed;
+        student.getStudentAttendance().setDaysMissed(daysMissed); //set missed days across all courses
     }
     else if (dataChoice == 'B') {
         // Input student personal information
@@ -188,98 +217,4 @@ void handleGradeEntryMenu(Student& student) {
         // Optionally, you can implement code to allow the user to continue entering grades for other courses.
         // For now, we will just return to the main menu directly when they press 'Y'.
     }
-}
-
-
-///fei's code inside main
-
-string user_in; //user input variable (make sure to validate the input so if the user doesn't enter one of the menu options, it does the loop again)
-while (!done) { //this loop runs over and over again as long as the user doesn't end the program
-    cout << "\nHow may I help you?" << endl; //help prompt
-    cout << "HOME MENU" << endl;
-    cout << "A: Enter Data\nB: View Data \nX: Exit program. " << endl; //have default constructor for everything so that if there's no data,it can be like "no data entered"
-    cin >> user_in; //take user input
-    transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper);// this is to handle any lower/upper case scenario
-
-    if (user_in == "A") {
-        cout << "\n*****ENTER DATA MENU*****" << endl;
-        cout << "What would you like to enter data for?" << endl;
-        cout << "A: Attendance\nB: Personal Info\nC: Course Info\nH: Return Home" << endl;
-        cin >> user_in;
-        transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper);// this is to handle any lower/upper case scenario
-
-        if (user_in == "A") {
-            cout << "Enter Attendance Info Selected." << endl;
-            int tmp1;
-            cout << "Please enter days of class attended: ";
-            cin >> tmp1;
-            tempRecord.setDaysAttended(tmp1);
-            cout << "Please enter days of class missed: ";
-            cin >> tmp1;
-            tempRecord.setDaysMissed(tmp1);
-            currentStudent.setStudentAttendance(tempRecord);
-        }
-        if (user_in == "B") {
-            string tmp;
-            int tmpage; //an int temporary value, specifically for the age
-            cout << "Enter Personal Info Selected." << endl;
-            cout << "Please enter your name: ";
-            cin.ignore(); //ignore leftover line from previous input
-            getline(cin, tmp); //use getline to get user input (using cin >> tmp would not work if input contained spaces)
-            tempInfo.setName(tmp);
-            cout << "Please enter your age: ";
-            cin >> tmpage; //cin works here because age won't have spaces
-            tempInfo.setAge(tmpage);
-            cout << "Please enter your gender: ";
-            cin.ignore();
-            getline(cin, tmp);
-            tempInfo.setGender(tmp);
-            cout << "Please enter your address: ";
-            cin.ignore();
-            getline(cin, tmp);
-            tempInfo.setAddress(tmp);
-            currentStudent.setStudentInfo(tempInfo);
-            cout << "Data entered successfully." << endl;
-        }
-        if (user_in == "C") {
-            cout << "choose course" << endl;
-        }
-        if (user_in == "H") {
-            cout << "Returning to Home Menu." << endl;
-        }
-    }
-    else if (user_in == "B") {
-        cout << "\n*****VIEW DATA MENU*****" << endl;
-        cout << "What data would you like to view?" << endl;
-        cout << "A: Attendance\nB: Personal Info\nC: Course Info\nH: Return Home" << endl;
-        cin >> user_in;
-        transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper);// this is to handle any lower/upper case scenario
-
-        if (user_in == "A") {
-            cout << "Displaying Attendance Records: " << endl;
-            currentStudent.displayStudentAttendance();
-        }
-        if (user_in == "B") {
-            cout << "Displaying Personal Info: " << endl;
-            currentStudent.displayStudentInfo(); //call display student info function
-        }
-        if (user_in == "C") {
-            cout << "choose course" << endl;
-        }
-        if (user_in == "H") {
-            cout << "Returning to Home Menu." << endl;
-        }
-    }
-    else if (user_in == "X") { //if the user input is X...
-        cout << "Thank you for using GradeZilla. Keep those grades high - remember, A is for alpha, Bs are for betas!!" << endl; //exit message
-        //don't forget to prompt the user to save the program data into a file
-        done = true; //exit the loop, therefore ending the program
-    }
-    else {
-        cout << "Invalid input, please enter something else." << endl;
-    }
-
-}
-return 0;
-
 }
