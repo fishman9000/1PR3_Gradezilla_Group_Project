@@ -23,6 +23,7 @@ void showMainMenu();
 void handleMainMenuChoice(char choice, Student& student);
 void handleDataEntryMenu(Student& student);
 void handleGradeEntryMenu(Student& student);
+void handleDataViewMenu(Student& student);
 
 int main() {
     cout << "**********************************WELCOME TO GRADEZILLA**********************************\n";
@@ -30,9 +31,7 @@ int main() {
     // Creating a student object to store all data for one student
     Student student;
 
-    //temporary info object used as a middleman to write data to the "student" object
     Info tempInfo;
-    Attendance tempRecord;
 
     bool done = false;
     char userChoice;
@@ -67,7 +66,7 @@ void handleMainMenuChoice(char choice, Student& student) {
     }
     else if (choice == 'B') {
         //cout << "View Data functionality coming soon!\n";
-        handleDataEntryMenu(student);
+        handleDataViewMenu(student);
     }
     else if (choice == 'C') {
         handleGradeEntryMenu(student);
@@ -115,12 +114,15 @@ void handleDataEntryMenu(Student& student) {
     if (dataChoice == 'A') {
         int daysAttended;
         int daysMissed;
+        //Attendance tempRecord;
         cout << "Enter total days attended: ";
-        cin >> daysAttended;
-        student.getStudentAttendance().setDaysAttended(daysAttended);  // Set attendance across all courses
+        cin >> daysAttended;        //tempRecord.setDaysAttended(daysAttended);
         cout << "Enter total days missed: ";
         cin >> daysMissed;
-        student.getStudentAttendance().setDaysMissed(daysMissed); //set missed days across all courses
+        //student.setStudentAttendance().setDaysMissed(daysMissed); //set missed days across all courses (disabled cuz it dont work)
+        //tempRecord.setDaysMissed(daysMissed);
+        student.setStudentAttendance(Attendance(daysAttended, daysMissed));  // Set attendance across all courses
+
     }
     else if (dataChoice == 'B') {
         // Input student personal information

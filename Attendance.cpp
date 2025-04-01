@@ -16,7 +16,7 @@ void Attendance::setDaysAttended(int days) {
 //setter for days missed
 void Attendance::setDaysMissed(int days) {
     if (days >= 0) {  // Ensure that days is non-negative
-        days_attended = days;
+        days_missed = days;
     }
     else {
         cout << "Error: Days missed cannot be negative.\n";
