@@ -16,5 +16,8 @@ public:
 
 	//constructors
 	Attendance(int a, int m);
+
+	//display attendance info
+	void displayAttendance() const;
 };
 

@@ -33,8 +33,15 @@ public:
 	void setStudentInfo(Info i);
 	Info getStudentInfo() const;
 
+	//setter and getter for student attendance
+	void setStudentAttendance(Attendance a);
+	Attendance getStudentAttendance() const;
+
 	//display student info function
 	void displayStudentInfo() const;
+
+	//display attendance function
+	void displayStudentAttendance() const;
 };
 
 

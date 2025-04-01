@@ -26,6 +26,7 @@ int main()
     
     //temporary info object used as a middleman to write data to the student
     Info tempInfo;
+    Attendance tempRecord;
     
     bool done = false;
     string user_in; //user input variable (make sure to validate the input so if the user doesn't enter one of the menu options, it does the loop again)
@@ -44,7 +45,15 @@ int main()
             transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper);// this is to handle any lower/upper case scenario
             
             if (user_in == "A") {
-                cout << "get attendance records" << endl;
+                cout << "Enter Attendance Info Selected." << endl;
+                int tmp1;
+                cout << "Please enter days of class attended: ";
+                cin >> tmp1;
+                tempRecord.setDaysAttended(tmp1);
+                cout << "Please enter days of class missed: ";
+                cin >> tmp1;
+                tempRecord.setDaysMissed(tmp1);
+                currentStudent.setStudentAttendance(tempRecord);
             }
             if (user_in == "B") {
                 string tmp;
@@ -83,7 +92,8 @@ int main()
             transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper);// this is to handle any lower/upper case scenario
             
             if (user_in == "A") {
-                cout << "get attendance records" << endl;
+                cout << "Displaying Attendance Records: " << endl;
+                currentStudent.displayStudentAttendance();
             }
             if (user_in == "B") {
                 cout << "Displaying Personal Info: " << endl;
