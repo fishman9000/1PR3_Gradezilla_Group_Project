@@ -92,26 +92,31 @@ double Course::calculateCourseAverage() const {
             double grade = grades[i][j].getGrade();  // Get grade for this assignment
             double weight = grades[i][j].getWeight();  // Get weight for this assignment
 
-            studentTotalGrade += grade * (weight / 100);  // Add weighted grade
-            studentTotalWeight += weight;  // Add weight for this assignment
+            // Add weighted grade and weight
+            studentTotalGrade += grade * (weight / 100);  // Weighted grade
+            studentTotalWeight += weight;  // Sum of weights
+
+            // Debugging output to check individual values
+            cout << "Student " << studentIDs[i] << " - Assignment " << j + 1
+                << ": Grade = " << grade << ", Weight = " << weight << endl;
         }
 
-        // Only include students with grades
+        // Add to the total grade and total weight
         if (studentTotalWeight > 0) {
             totalGrade += studentTotalGrade;
             totalWeight += studentTotalWeight;
         }
     }
 
-    // Debugging output
+    // Debugging output for the total grade and weight
     cout << "Total grade: " << totalGrade << ", Total weight: " << totalWeight << endl;
 
-    // Return the overall average for the course
+    // Calculate and return the overall course average
     if (totalWeight > 0) {
-        return totalGrade / totalWeight;  // No need to divide by 100 here
+        return totalGrade / totalWeight;  // Weighted average
     }
 
-    return 0.0;  // Return 0 if no valid grades are available
+    return 0.0;  // Return 0 if no valid grades
 }
 
 

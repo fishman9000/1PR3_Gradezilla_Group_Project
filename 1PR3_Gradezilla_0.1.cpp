@@ -169,55 +169,12 @@ void handleDataEntryMenu(Student& student) {
 }
 
 void handleGradeEntryMenu(Student& student) {
-    bool done = false;
-
     // Check if the student has any courses
     if (student.getNumCourses() == 0) {
         cout << "No courses available for grade entry. Please enter course data first.\n";
-        return;  // Return to main menu or elsewhere if no courses are present
+        return;  // Return to main menu
     }
 
-    // Loop through all courses the student is enrolled in
-    for (int i = 0; i < student.getNumCourses(); i++) {
-        cout << "Enter grades for course: " << student.getCourse(i).getCourseName() << endl;
-        int numAssignments;
-        cout << "How many assignments for this course? ";
-        cin >> numAssignments;
-
-        // Loop through assignments and ask for grades and weights
-        for (int j = 0; j < numAssignments; j++) {
-            string assignmentName;
-            double grade, weight;
-
-            cout << "Enter assignment " << j + 1 << " name: ";
-            cin.ignore();  // Ignore leftover newline
-            getline(cin, assignmentName);
-            cout << "Enter grade for " << assignmentName << ": ";
-            cin >> grade;
-            cout << "Enter weight for " << assignmentName << " (as a percentage): ";
-            cin >> weight;
-
-            // Create grade object and add it to course
-            Grade newGrade(assignmentName, grade, weight);
-            student.getCourse(i).addAssignment(newGrade);  // Add the grade to the course
-        }
-
-        // Calculate and display the average grade for this course
-        double averageGrade = student.getCourse(i).calculateCourseAverage();
-        cout << "Average grade for " << student.getCourse(i).getCourseName() << ": " << averageGrade << "%" << endl;
-    }
-
-    // Ask if the user wants to go back to the menu
-    char returnChoice;
-    cout << "\nWould you like to return to the main menu? (Y/N): ";
-    cin >> returnChoice;
-    returnChoice = toupper(returnChoice);
-
-    if (returnChoice == 'Y') {
-        done = true;  // End the loop and go back to the main menu
-    }
-    else {
-        // Optionally, you can implement code to allow the user to continue entering grades for other courses.
-        // For now, we will just return to the main menu directly when they press 'Y'.
-    }
+    // Call the updated `enterGrades()` method, which lets the user choose a course
+    student.enterGrades();
 }
