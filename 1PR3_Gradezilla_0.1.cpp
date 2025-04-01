@@ -8,6 +8,7 @@
 // 2025-3-20 (check github logs)
 
 #include <iostream>
+#include <iomanip>
 #include "Attendance.h"
 #include "Student.h"
 #include "Course.h"
@@ -50,16 +51,19 @@ int main()
                 int tmpage; //an int temporary value, specifically for the age
                 cout << "Enter Personal Info Selected." << endl;
                 cout << "Please enter your name: ";
-                cin >> tmp;
+                cin.ignore(); //ignore leftover line from previous input
+                getline(cin, tmp); //use getline to get user input (using cin >> tmp would not work if input contained spaces)
                 tempInfo.setName(tmp);
                 cout << "Please enter your age: ";
-                cin >> tmpage;
+                cin >> tmpage; //cin works here because age won't have spaces
                 tempInfo.setAge(tmpage);
                 cout << "Please enter your gender: ";
-                cin >> tmp;
+                cin.ignore();
+                getline(cin, tmp);
                 tempInfo.setGender(tmp);
                 cout << "Please enter your address: ";
-                cin >> tmp;
+                cin.ignore();
+                getline(cin, tmp);
                 tempInfo.setAddress(tmp);
                 currentStudent.setStudentInfo(tempInfo);
                 cout << "Data entered successfully." << endl;
