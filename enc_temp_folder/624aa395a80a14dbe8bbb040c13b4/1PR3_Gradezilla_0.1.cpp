@@ -81,7 +81,6 @@ void handleDataViewMenu(Student& student) {
     cout << "\n*****VIEW DATA MENU*****" << endl;
     cout << "What data would you like to view?" << endl;
     cout << "A: Attendance\nB: Personal Info\nC: Course Info\nH: Return Home" << endl;
-    cout << "Enter your choice: ";
     cin >> user_in;
     transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper);// this is to handle any lower/upper case scenario
 
