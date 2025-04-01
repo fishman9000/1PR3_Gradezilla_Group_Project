@@ -3,20 +3,34 @@
 #include <iostream>
 using namespace std;
 
-//setter definitions
-void Attendance::setDaysAttended(int a) {
-	days_attended = a;
+
+// Setter for daysAttended
+void Attendance::setDaysAttended(int days) {
+    if (days >= 0) {  // Ensure that days attended is non-negative
+        daysAttended = days;
+    }
+    else {
+        cout << "Error: Days attended cannot be negative.\n";
+    }
 }
-void Attendance::setDaysMissed(int m) {
-	days_missed = m;
+//setter for days missed
+void Attendance::setDaysMissed(int days) {
+    if (days >= 0) {  // Ensure that days is non-negative
+        daysAttended = days;
+    }
+    else {
+        cout << "Error: Days missed cannot be negative.\n";
+    }
 }
 
-//getter definitions
+
+// Getter for daysAttended
 int Attendance::getDaysAttended() const {
-	return days_attended;
+    return daysAttended;
 }
+//getter for days missed
 int Attendance::getDaysMissed() const {
-	return days_missed;
+    return days_missed;
 }
 
 

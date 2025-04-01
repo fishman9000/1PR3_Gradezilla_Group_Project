@@ -1,47 +1,100 @@
 #include "Student.h"
-#include "Course.h"
-//constructor
-Student::Student(int n, Info i, Attendance r) :numCourses(n), studentInfo(i), record(r) {
-	courseArrayTest = new Course[numCourses]; // Dynamically allocate array
+#include <iostream>
+using namespace std;
+
+Student::Student() : studentID(""), name(""), courses(), personalInfo(), attendance() {}
+
+
+
+Student::Student(string id, string n) : studentID(id), name(n), courses(), personalInfo(), attendance() {}
+
+Student::Student(int n, Info i, Attendance r) :numCourses(n), studentInfo(i), record(r) { //fei's constructor
+    courseArrayTest = new Course[numCourses]; // Dynamically allocate array
 }
 
-//default constructor
+
+
+//fei's default constructor
 Student::Student() {
-	studentInfo.setName("");
-	studentInfo.setAge(0);
-	studentInfo.setGender("");
-	studentInfo.setAddress("");
-	record.setDaysAttended(0);
-	record.setDaysMissed(0);
+    studentInfo.setName("");
+    studentInfo.setAge(0);
+    studentInfo.setGender("");
+    studentInfo.setAddress("");
+    record.setDaysAttended(0);
+    record.setDaysMissed(0);
 }
 
-Student::~Student() {
-	delete[] courseArrayTest;
+void Student::setStudentID(string id) {
+    studentID = id;
 }
 
-//setter and getter for student personal info
-void Student::setStudentInfo(Info i) {
-	studentInfo = i;
+void Student::setName(string n) {
+    name = n;
 }
+
+string Student::getStudentID() const {
+    return studentID;
+}
+
+string Student::getName() const {
+    return name;
+}
+
+int Student::getNumCourses() const {
+    return courses.size();  // Return number of courses using vector size
+}
+
+Course Student::getCourse(int index) const {
+    if (index >= 0 && index < courses.size()) {
+        return courses[index];  // Return the course at the given index
+    }
+    // If invalid index, return a default Course object
+    return Course();
+}
+
+void Student::addCourse(const Course& c) {
+    courses.push_back(c);  // Dynamically add a course to the vector
+}
+
+void Student::setStudentInfo(const Info& info) {
+    personalInfo = info;  // Set the personal info for the student
+}
+
 Info Student::getStudentInfo() const {
-	return studentInfo;
+    return personalInfo;  // Return the personal info of the student
 }
 
+Attendance& Student::getAttendanceRecord() {
+    return attendance;  // Return a reference to the attendance record for the student
+}
+
+void Student::setAttendanceRecord(const Attendance& att) {
+    attendance = att;  // Set the attendance record for the student
+}
+
+void Student::enterGrades() {
+    for (int i = 0; i < courses.size(); i++) {
+        courses[i].enterGradesForCourse();  // Call the function to input grades for each course
+    }
+}
+
+
+//fei's setters and getters
 //setter and getter for student attendance record
 void Student::setStudentAttendance(Attendance a) {
-	record = a;
+    record = a;
 }
 Attendance Student::getStudentAttendance() const {
-	return record;
+    return record;
 }
 
 
 
 //display student info
 void Student::displayStudentInfo() const {
-	studentInfo.displayInfo();
+    studentInfo.displayInfo();
 }
 
 void Student::displayStudentAttendance() const {
-	record.displayAttendance();
+    record.displayAttendance();
 }

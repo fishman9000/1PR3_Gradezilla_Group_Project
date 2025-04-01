@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 class Attendance
 {
 protected:
@@ -20,4 +21,3 @@ public:
 	//display attendance info
 	void displayAttendance() const;
 };
-

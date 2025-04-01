@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <vector>
+#include "Grade.h"
 
 using namespace std;
 
@@ -7,21 +9,17 @@ const int MAX_STUDENTS = 100;   // Maximum students per course
 const int MAX_ASSIGNMENTS = 10; // Maximum assignments per course
 
 class Course {
-protected:
+private:
     string courseCode;
     string courseName;
     string teacherName;
     string classroom;
-    string studentIDs[MAX_STUDENTS];      // Stores student IDs
-    double grades[MAX_STUDENTS][MAX_ASSIGNMENTS]; // Stores grades for assignments
-    int studentCount;                     // Number of students
-    int assignmentCount;                   // Number of assignments
+    vector<string> studentIDs;  // Dynamically sized vector for student IDs
+    vector<vector<Grade>> grades;  // Dynamically sized 2D vector for storing grades
+    int numAssignments;  // Tracks number of assignments added
 
 public:
-    //default constructor
-    Course();
-
-    // Constructor
+    Course();  // Default constructor
     Course(string code, string name, string teacher, string room);
 
     // Setters
@@ -29,18 +27,20 @@ public:
     void setCourseName(string name);
     void setTeacherName(string teacher);
     void setClassroom(string room);
+    void addAssignment(const Grade& grade);
 
     // Getters
     string getCourseCode() const;
     string getCourseName() const;
     string getTeacherName() const;
     string getClassroom() const;
+    int getNumAssignments() const;
 
-    // Grade Management
+    // Methods to manage students
     void addStudent(string studentID);
-    void addGrade(string studentID, int assignmentIndex, double grade);
-    double getGrade(string studentID, int assignmentIndex) const;
-    double getAverageGrade(string studentID) const;
-    double getCourseAverage() const;
-    void displayGrades() const;
+    void addGradeForStudent(int studentIndex, const Grade& grade);
+    void enterGradesForCourse();
+
+    // Calculate course average
+    double calculateCourseAverage() const;
 };

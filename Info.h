@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+
 using namespace std;
 class Info //student's personal info
 {
@@ -31,4 +32,3 @@ public:
 	void displayInfo() const; //display function to display info data
 
 };
-

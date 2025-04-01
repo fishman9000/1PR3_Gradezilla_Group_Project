@@ -1,47 +1,61 @@
 #pragma once
+#include <string>
+#include "Attendance.h"
 #include "Course.h"
 #include "Info.h"
-#include "Attendance.h"
-class Student
-{
+#include <vector>  // Include vector header
+
+class Student {
 protected:
-	//course data handling
-	int numCourses; //number of courses (determines the size of the array, user inputs this through the main)
-	static const int SIZE = 5; //this should be set to numCourses, but we'll leave it here for now for testing purposes
-	//Course courseArray[SIZE]; //array of courses, disabled for now so I can do everything but the course stuff
-
-	Course* courseArrayTest; //Testing Array with dynamically allocated memory
-
-
-	//other private members
-	Info studentInfo; //student info object to store their data and stuff
-	Attendance record; //attendance record object to store their attendance record
-
+    string studentID;               // Stores student ID
+    string name;                    // Stores student name
+    Attendance record;          // Stores attendance record
+    std::vector<Course> courses;    // Vector to store courses (dynamic)
+    Info studentInfo;              // The personal info of the student
 
 public:
+    Student();                      // Default constructor
+    Student(string id, string n);   // Constructor with student ID and name
 
-	//default constructor
-	Student();
+    //fei's constructor
+    Student(int n, Info i, Attendance r);
+    ~Student(); // destructor for DAM
 
-	//constructor
-	Student(int n, Info i, Attendance r);
+    // Setters
+    void setStudentID(string id);
+    void setName(string n);
+    void setStudentInfo(const Info& info);
+    void setAttendanceRecord(const Attendance& att);
 
-	~Student(); // destructor for DAM
+    // Getters
+    string getStudentID() const;
+    string getName() const;
+    int getNumCourses() const;
+    Course getCourse(int index) const;
+    Info getStudentInfo() const;
+    Attendance& getAttendanceRecord();  // Returns reference to the Attendance object
 
+    // Method to add course
+    void addCourse(const Course& c);
 
-	//setter and getter for studentInfo
-	void setStudentInfo(Info i);
-	Info getStudentInfo() const;
+    // Method to enter grades for each course
+    void enterGrades();
+};
 
-	//setter and getter for student attendance
-	void setStudentAttendance(Attendance a);
-	Attendance getStudentAttendance() const;
+//fei's setters, getters, and functions
+//setter and getter for studentInfo
+void setStudentInfo(Info i);
+Info getStudentInfo() const;
 
-	//display student info function
-	void displayStudentInfo() const;
+//setter and getter for student attendance
+void setStudentAttendance(Attendance a);
+Attendance getStudentAttendance() const;
 
-	//display attendance function
-	void displayStudentAttendance() const;
+//display student info function
+void displayStudentInfo() const;
+
+//display attendance function
+void displayStudentAttendance() const;
 };
 
 
