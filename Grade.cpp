@@ -1,4 +1,5 @@
 #include "Grade.h"
+#include <iostream>
 using namespace std;
 
 // Default constructor
