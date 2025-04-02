@@ -1,20 +1,31 @@
 #pragma once
 #include <string>
 #include <vector>
-
-using namespace std;
+#include "Grade.h"
+#include "Attendance.h"
 
 class Course {
 private:
-    string courseName;
-    string courseCode;
-    string teacherName;
-    string classroom;
-    vector<int> grades;
+    std::string name;
+    std::string code;
+    std::string teacher;
+    std::string classroom;
+    std::vector<Grade> grades;
+    Attendance attendance;
 
 public:
-    Course(string name, string code, string teacher, string room);
+    // Methods for course details
+    void enterCourseInfo();
 
-    void addGrade(int grade);
-    void viewCourseData() const;
+    // Enter grades for assignments
+    void enterGrades(int numAssignments);
+
+    // Set attendance for the course
+    void setAttendance(int totalDays, int attendedDays);
+
+    // Display course information
+    void displayCourseInfo() const;
+
+    // Calculate average grade for the course
+    double calculateAverage() const;
 };

@@ -1,25 +1,25 @@
 #include "Info.h"
 #include <iostream>
-
 using namespace std;
 
-Info::Info(string studentName) {
-    name = studentName;
-}
+void Info::enterInfo() {
+    cout << "Enter student full name: ";
+    getline(cin, name); // Captures full name with spaces
 
-void Info::enterStudentInfo() {
-    cout << "Enter age for " << name << ": ";
+    cout << "Enter age: ";
     cin >> age;
-    cout << "Enter gender for " << name << ": ";
-    cin.ignore();  // To ignore the newline from previous input
-    getline(cin, gender);
-    cout << "Enter address for " << name << ": ";
-    getline(cin, address);
+    cin.ignore(); // Clears newline character left in the buffer
+
+    cout << "Enter gender: ";
+    getline(cin, gender); // Allows spaces in gender input (if needed)
+
+    cout << "Enter full address: ";
+    getline(cin, address); //  Captures full address with spaces
 }
 
-void Info::displayStudentInfo() const {
-    cout << "Student: " << name << endl;
+void Info::displayInfo() const {
+    cout << "Student Name: " << name << endl;
     cout << "Age: " << age << endl;
     cout << "Gender: " << gender << endl;
-    cout << "Address: " << address << endl << endl;
+    cout << "Address: " << address << endl;
 }

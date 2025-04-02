@@ -1,15 +1,20 @@
+
 #pragma once
+
 #include <string>
+#include <iostream>
 
 class Info {
-public:
+private:
     std::string name;
     int age;
     std::string gender;
     std::string address;
 
-    Info(std::string studentName);
+public:
+    void enterInfo();
+    void displayInfo() const;
 
-    void enterStudentInfo();
-    void displayStudentInfo() const;
+    std::string getName() const { return name; }  // Getter for name
 };
+

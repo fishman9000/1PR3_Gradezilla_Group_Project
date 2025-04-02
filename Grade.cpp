@@ -1,9 +1,19 @@
 #include "Grade.h"
 #include <iostream>
 
-using namespace std;
-
+// Enter grade for an assignment
 void Grade::enterGrade(int assignmentNumber) {
-    cout << "Enter grade for Assignment " << assignmentNumber << ": ";
-    cin >> grade;
+    std::cout << "Enter grade for Assignment " << assignmentNumber << ": ";
+    std::cin >> grade;
+    std::cin.ignore(); // Ignore newline left by cin
+}
+
+// Display the grade for an assignment
+void Grade::displayGrade() const {
+    std::cout << "Assignment - Grade: " << grade << std::endl;
+}
+
+// Get the grade for calculations
+double Grade::getGrade() const {
+    return grade;
 }

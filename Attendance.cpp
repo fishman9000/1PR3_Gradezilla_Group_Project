@@ -1,24 +1,20 @@
 #include "Attendance.h"
-#include <iostream>
-#include <iomanip>  // For setting precision
 
-using namespace std;
-
-void Attendance::enterAttendanceInfo() {
-    cout << "Enter total number of days in the semester: ";
-    cin >> totalDays;
-    cout << "Enter the number of days attended: ";
-    cin >> daysAttended;
+// Set attendance details
+void Attendance::setAttendance(int total, int attended) {
+    totalDays = total;
+    attendedDays = attended;
 }
 
-void Attendance::displayAttendanceInfo() const {
-    double attendancePercentage = getAttendancePercentage();
-    cout << "Total Days: " << totalDays << endl;
-    cout << "Attended Days: " << daysAttended << endl;
-    cout << "Attendance Percentage: " << fixed << setprecision(2) << attendancePercentage << "%" << endl;
-}
-
+// Calculate and return attendance percentage
 double Attendance::getAttendancePercentage() const {
-    if (totalDays == 0) return 0.0;  // Avoid division by zero
-    return (static_cast<double>(daysAttended) / totalDays) * 100.0;
+    if (totalDays == 0) return 0; // Avoid division by zero
+    return (static_cast<double>(attendedDays) / totalDays) * 100;
+}
+
+// Display attendance information
+void Attendance::displayAttendance() const {
+    std::cout << "Total Days: " << totalDays << std::endl;
+    std::cout << "Attended Days: " << attendedDays << std::endl;
+    std::cout << "Attendance Percentage: " << std::fixed << std::setprecision(2) << getAttendancePercentage() << "%" << std::endl;
 }

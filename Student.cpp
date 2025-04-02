@@ -1,31 +1,54 @@
 #include "Student.h"
+#include "Info.h"
 #include <iostream>
 
-using namespace std;
-
-Student::Student(string n, int a, string g, string addr)
-    : name(n), age(a), gender(g), address(addr) {}
-
-string Student::getName() const {
-    return name;
+// Enter student information
+void Student::enterStudentInfo() {
+    studentInfo.enterInfo();
 }
 
-void Student::addCourse(const Course& course) {
-    courses.push_back(course);
+// Display student data
+void Student::displayStudentData() const {
+    studentInfo.displayInfo();
 }
 
-void Student::viewData() const {
-    cout << "\nStudent: " << name << endl;
-    cout << "Age: " << age << endl;
-    cout << "Gender: " << gender << endl;
-    cout << "Address: " << address << endl;
+// Enter courses for the student
+void Student::enterCourses() {
+    int numCourses;
+    std::cout << "Enter number of courses: ";
+    std::cin >> numCourses;
+    std::cin.ignore(); // Ignore newline left by cin
 
-    if (courses.empty()) {
-        cout << "No courses available." << endl;
+    for (int i = 1; i <= numCourses; i++) {
+        Course course;
+        std::cout << "Enter course " << i << " details:" << std::endl;
+        course.enterCourseInfo();
+
+        int numAssignments;
+        std::cout << "Enter number of assignments: ";
+        std::cin >> numAssignments;
+        std::cin.ignore(); // Ignore newline left by cin
+
+        course.enterGrades(numAssignments);
+
+        int totalDays, attendedDays;
+        std::cout << "Enter total number of days in the semester: ";
+        std::cin >> totalDays;
+        std::cout << "Enter the number of days attended: ";
+        std::cin >> attendedDays;
+        std::cin.ignore(); // Ignore newline left by cin
+
+        course.setAttendance(totalDays, attendedDays);
+
+        courses.push_back(course);
     }
-    else {
-        for (const auto& course : courses) {
-            course.viewCourseData();
-        }
+}
+
+// Display all course data for the student
+void Student::displayCoursesData() const {
+    for (const auto& course : courses) {
+        course.displayCourseInfo();
+        std::cout << "Average Grade: " << course.calculateAverage() << std::endl;
+        std::cout << std::endl;
     }
 }
