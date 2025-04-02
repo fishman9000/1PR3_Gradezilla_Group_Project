@@ -1,53 +1,24 @@
 #include "Attendance.h"
-#include <iomanip>
 #include <iostream>
+#include <iomanip>  // For setting precision
+
 using namespace std;
 
-
-// Setter for daysAttended
-void Attendance::setDaysAttended(int days) {
-    if (days >= 0) {  // Ensure that days attended is non-negative
-        days_attended = days;
-    }
-    else {
-        cout << "Error: Days attended cannot be negative.\n";
-    }
-}
-//setter for days missed
-void Attendance::setDaysMissed(int days) {
-    if (days >= 0) {  // Ensure that days is non-negative
-        days_missed = days;
-    }
-    else {
-        cout << "Error: Days missed cannot be negative.\n";
-    }
+void Attendance::enterAttendanceInfo() {
+    cout << "Enter total number of days in the semester: ";
+    cin >> totalDays;
+    cout << "Enter the number of days attended: ";
+    cin >> daysAttended;
 }
 
-
-// Getter for daysAttended
-int Attendance::getDaysAttended() const {
-    return days_attended;
-}
-//getter for days missed
-int Attendance::getDaysMissed() const {
-    return days_missed;
+void Attendance::displayAttendanceInfo() const {
+    double attendancePercentage = getAttendancePercentage();
+    cout << "Total Days: " << totalDays << endl;
+    cout << "Attended Days: " << daysAttended << endl;
+    cout << "Attendance Percentage: " << fixed << setprecision(2) << attendancePercentage << "%" << endl;
 }
 
-
-//default constructor
-Attendance::Attendance() {
-	days_attended = 0;
-	days_missed = 0;
-}
-
-//constructor definition
-
-Attendance::Attendance(int a, int m) {
-	days_attended = a;
-	days_missed = m;
-}
-
-//display attendance data function definition
-void Attendance::displayAttendance() const {
-	cout << "Days Attended: " << getDaysAttended() << "\nDays Missed: " << getDaysMissed() << endl;
+double Attendance::getAttendancePercentage() const {
+    if (totalDays == 0) return 0.0;  // Avoid division by zero
+    return (static_cast<double>(daysAttended) / totalDays) * 100.0;
 }
