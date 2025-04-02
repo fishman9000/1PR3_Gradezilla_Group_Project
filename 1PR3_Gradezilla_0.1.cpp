@@ -14,11 +14,12 @@
 #include "Course.h"
 #include "Info.h"
 #include "Grade.h"
-#include <algorithm> //added this header for transform function (handles Upper/lower case scenario)
-#include <cctype> // for toupper header for transform function
+#include <algorithm> // Added this header for transform function (handles Upper/lower case scenario)
+#include <cctype> // For toupper header for transform function
 
 using namespace std;
 
+// Function declarations
 void showMainMenu();
 void handleMainMenuChoice(char choice, Student& student);
 void handleDataEntryMenu(Student& student);
@@ -30,10 +31,7 @@ int main() {
 
     // Creating a student object to store all data for one student
     Student student;
-
-    Info tempInfo;
-
-    bool done = false;
+    bool done = false; // Loop control variable
     char userChoice;
 
     while (!done) {
@@ -42,7 +40,7 @@ int main() {
         userChoice = toupper(userChoice); // Convert input to uppercase for consistency
 
         if (userChoice == 'X') {
-            done = true;
+            done = true; // Exiting the loop when 'X' is entered
         }
         else {
             handleMainMenuChoice(userChoice, student);
@@ -53,128 +51,115 @@ int main() {
     return 0;
 }
 
+// Displays the main menu options
 void showMainMenu() {
     cout << "\nHow may I help you?\n";
-    cout << "HOME MENU" << endl;
-    cout << "A: Enter Data\nB: View Data\nC: Enter Grades\nX: Exit program" << endl;
+    cout << "HOME MENU\n";
+    cout << "A: Enter Data\nB: View Data\nC: Enter Grades\nX: Exit program\n";
     cout << "Enter your choice: ";
 }
 
+// Handles user choice from the main menu
 void handleMainMenuChoice(char choice, Student& student) {
-    if (choice == 'A') {
-        handleDataEntryMenu(student);
-    }
-    else if (choice == 'B') {
-        //cout << "View Data functionality coming soon!\n";
-        handleDataViewMenu(student);
-    }
-    else if (choice == 'C') {
-        handleGradeEntryMenu(student);
-    }
-    else {
-        cout << "Invalid input! Please enter A, B, C, or X." << endl;
+    switch (choice) {
+    case 'A': handleDataEntryMenu(student); break;
+    case 'B': handleDataViewMenu(student); break;
+    case 'C': handleGradeEntryMenu(student); break;
+    default:  cout << "Invalid input! Please enter A, B, C, or X.\n";
     }
 }
 
+// Handles viewing student data based on user selection
 void handleDataViewMenu(Student& student) {
-    string user_in; //user input thingy
-    cout << "\n*****VIEW DATA MENU*****" << endl;
-    cout << "What data would you like to view?" << endl;
-    cout << "A: Attendance\nB: Personal Info\nC: Course Info\nH: Return Home" << endl;
+    string user_in;
+    cout << "\n*****VIEW DATA MENU*****\n";
+    cout << "What data would you like to view?\n";
+    cout << "A: Attendance\nB: Personal Info\nC: Course Info\nH: Return Home\n";
     cout << "Enter your choice: ";
     cin >> user_in;
-    transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper);// this is to handle any lower/upper case scenario
+    transform(user_in.begin(), user_in.end(), user_in.begin(), ::toupper); // Convert to uppercase
 
     if (user_in == "A") {
-        cout << "Displaying Attendance Records: " << endl;
+        cout << "Displaying Attendance Records: \n";
         student.displayStudentAttendance();
     }
-    if (user_in == "B") {
-        cout << "Displaying Personal Info: " << endl;
-        student.displayStudentInfo(); //call display student info function
+    else if (user_in == "B") {
+        cout << "Displaying Personal Info: \n";
+        student.displayStudentInfo();
     }
-    if (user_in == "C") {
-        cout << "View course data functionality coming soon!" << endl;
+    else if (user_in == "C") {
+        cout << "Course display functionality coming soon!\n"; // Placeholder for missing function
     }
-    if (user_in == "H") {
-        cout << "Returning to Home Menu..." << endl;
+    else if (user_in == "H") {
+        cout << "Returning to Home Menu...\n";
+    }
+    else {
+        cout << "Invalid input! Please enter A, B, C, or H.\n";
     }
 }
 
+// Handles data entry for attendance, personal info, and courses
 void handleDataEntryMenu(Student& student) {
     char dataChoice;
-
-    // Displaying menu to enter data
     cout << "***** ENTER DATA MENU *****\n";
     cout << "What would you like to enter data for?\n";
     cout << "A: Attendance\nB: Personal Info\nC: Course Info\nH: Return Home\n";
     cout << "Enter your choice: ";
     cin >> dataChoice;
-    dataChoice = toupper(dataChoice);  // Convert choice to uppercase to handle case-insensitivity
+    dataChoice = toupper(dataChoice); // Convert to uppercase
 
     if (dataChoice == 'A') {
-        int daysAttended;
-        int daysMissed;
-        //Attendance tempRecord;
+        int daysAttended, daysMissed;
         cout << "Enter total days attended: ";
-        cin >> daysAttended;        //tempRecord.setDaysAttended(daysAttended);
+        cin >> daysAttended;
         cout << "Enter total days missed: ";
         cin >> daysMissed;
-        //student.setStudentAttendance().setDaysMissed(daysMissed); //set missed days across all courses (disabled cuz it dont work)
-        //tempRecord.setDaysMissed(daysMissed);
-        student.setStudentAttendance(Attendance(daysAttended, daysMissed));  // Set attendance across all courses
-
+        student.setStudentAttendance(Attendance(daysAttended, daysMissed));
+        cout << "Attendance data updated successfully!\n";
     }
     else if (dataChoice == 'B') {
-        // Input student personal information
         string name, gender, address;
         int age;
-
         cout << "Enter your name: ";
-        cin.ignore(); // To ignore the newline character left by previous input
+        cin.ignore();
         getline(cin, name);
         cout << "Enter your age: ";
         cin >> age;
+        cin.ignore();
         cout << "Enter your gender: ";
-        cin.ignore(); // Ignore newline from age input
         getline(cin, gender);
         cout << "Enter your address: ";
         getline(cin, address);
-
-        student.setStudentInfo(Info(name, age, gender, address));  // Set personal info
+        student.setStudentInfo(Info(name, age, gender, address));
+        cout << "Personal information updated successfully!\n";
     }
     else if (dataChoice == 'C') {
-        // Input course information
         string courseCode, courseName, teacherName, classroom;
-
         cout << "Enter course code: ";
         cin >> courseCode;
+        cin.ignore();
         cout << "Enter course name: ";
-        cin.ignore();  // To ignore the newline character left by previous input
         getline(cin, courseName);
         cout << "Enter teacher name: ";
         getline(cin, teacherName);
         cout << "Enter classroom: ";
         getline(cin, classroom);
-
-        Course course(courseCode, courseName, teacherName, classroom); // Create course object
-        student.addCourse(course);  // Add course to student
+        student.addCourse(Course(courseCode, courseName, teacherName, classroom));
+        cout << "Course added successfully!\n";
     }
     else if (dataChoice == 'H') {
         cout << "Returning to Home Menu...\n";
     }
     else {
-        cout << "Invalid input! Please enter A, B, C, or H." << endl;
+        cout << "Invalid input! Please enter A, B, C, or H.\n";
     }
 }
 
+// Handles entering grades for student courses
 void handleGradeEntryMenu(Student& student) {
-    // Check if the student has any courses
     if (student.getNumCourses() == 0) {
         cout << "No courses available for grade entry. Please enter course data first.\n";
-        return;  // Return to main menu
+        return;
     }
-
-    // Call the updated `enterGrades()` method, which lets the user choose a course
-    student.enterGrades();
+    student.enterGrades(); // Calls the method to enter grades
 }
